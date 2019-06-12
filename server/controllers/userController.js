@@ -11,14 +11,20 @@ module.exports = {
             if(!userFound[0]){
                 res.status(200).send('Incorrect username/password')
             } else {
+                console.log('this is the password',password)
+                console.log('this is the user password', userFound[0].password)
                 bcrypt.compare(password, userFound[0].password)
                 .then(matchedPassword => {
+                    console.log(matchedPassword)
                     if(matchedPassword){
                         const {username, email, user_id} = userFound[0]
                         req.session.user = {username, email, user_id}
                         res.status(200).send(req.session.user)
+                        res.statusMessage = 'they match'
+                        console.log('they match')
                     } else {
                         res.status(200).send(req.session.user)
+                        console.log('they dont match')
                     }
                 })
             }
@@ -59,7 +65,8 @@ module.exports = {
     },
 
     logout: (req, res, next) => {
-        res.session.destroy()
+        console.log('hit')
+        req.session.destroy()
         res.status(200).send('logged out')
     }
 }

@@ -19,7 +19,7 @@ class Register extends Component {
 
     componentDidMount(){
         axios.get('/api/user').then(res => {
-            console.log(res)
+            console.log(res.data)
         })
     }
 
@@ -30,19 +30,22 @@ class Register extends Component {
     }
 
     register = () => {
-        this.setState({
-            redirect: true
-        })
         const {username, email, password} = this.state
-        axios.post('/api/register', {username, password, email})
-        .then(res => {
-            console.log(res)
-        })
+        if(username !== '' && email !=='' && password !==''){
+            this.setState({
+                redirect: true
+            })
+
+            axios.post('/api/register', {username, password, email})
+            .then(res => {
+                console.log(res.data)
+            })
+        }
     }
 
     goToHomePage = () => {
         if(this.state.redirect){
-            return <Redirect to='/home' />
+            return <Redirect to='/' />
         }
     }
 
@@ -55,11 +58,7 @@ class Register extends Component {
                 {this.goToHomePage()}
                 <div>
                     Username: <input onChange= {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={username} name='username' />
-                </div>
-                <div>
                     Password: <input onChange = {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={password} name='password' type='password' />
-                </div>
-                <div>
                     Email: <input onChange = {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={email} name='email' />
                 </div>
                 <div>
@@ -73,7 +72,7 @@ class Register extends Component {
 }
 
 const mapStateToProps = (reduxState) => {
-    console.log(reduxState)
+    return reduxState
 }
 
 const mapDispatchToProps = {

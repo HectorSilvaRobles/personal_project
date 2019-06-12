@@ -1,0 +1,71 @@
+import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import {setUser} from '../../../dux/reducer'
+import axios from 'axios'
+import {Redirect} from 'react-router-dom'
+
+class Login extends Component {
+    constructor(props){
+        super(props)
+
+        this.state = {
+            username: '',
+            password: '',
+            redirect: false
+        }
+    }
+
+    universalChangeHandler = (prop, value) => {
+        this.setState({
+            [prop]: value
+        })
+    }
+
+    login = () => {
+        const {username, password} = this.state
+        if(username !== '' && password !==''){
+            axios.post('/api/login', {username, password})
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    redirect: true
+                })
+            })
+        }
+    }
+
+    goToHomePage = () => {
+        if(this.state.redirect){
+            return <Redirect to='/' />
+        }
+    }
+
+
+    render() {
+        const {username, password} = this.state
+        return (
+            <div>
+                {this.goToHomePage()}
+                <div>
+                    Username: <input onChange= {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={username} name='username' />
+                    Password: <input onChange={(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={password} name='password' type='password' />
+                    <div>
+                        <button onClick={this.login}>Login</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = (reduxState) => {
+    return reduxState
+}
+
+const mapDispatchToProps = {
+    setUser
+}
+
+const myConnect = connect(mapStateToProps, mapDispatchToProps)
+
+export default myConnect(Login)

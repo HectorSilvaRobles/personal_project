@@ -6,9 +6,9 @@ const fs = require('fs')
 const writeStream = fs.createWriteStream('post.csv')
 
 /// write headers
-writeStream.write(`Products \n`)
+writeStream.write(`Product \n`)
 
-const url = 'https://www.sneakerhead.com/nike-basketball-sport-men-p1.html'
+const url = 'https://www.sneakerhead.com/nike-air-max-mens-shoes-p1.html'
 
 rp(url)
 .then((html)=> {
@@ -20,7 +20,7 @@ rp(url)
     }
     return Promise.all(
         products.map((url) => {
-            return productsScrape(url)
+            return JSON.stringify(productsScrape(url))
         })
     )
 })

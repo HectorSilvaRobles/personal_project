@@ -2,8 +2,8 @@ module.exports = {
     addProducts: (req, res, next) => {
         const dbInstance = req.app.get('db')
         req.body.map((val, index, arr) => {
-            let {name, price, size, image} = val
-            dbInstance.productDB.post.addProduct([name, price, size, image])
+            let {name, price, size, image, description} = val
+            dbInstance.productDB.post.addProduct([name, price, size, image, description])
         // .then(()=> res.status(200).send(`Just added ${name} into database`))
             .catch(err => {
             console.log(err)})

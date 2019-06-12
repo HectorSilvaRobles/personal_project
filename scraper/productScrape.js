@@ -1,8 +1,6 @@
 const rp = require('request-promise');
 const cheerio = require('cheerio')
 
-
-
 const productsScrape = function(url){
 return rp(url)
 .then((html) => {
@@ -20,32 +18,49 @@ return rp(url)
             size[i] = parseFloat(size[i])
           }
            sizes = [...new Set(size)]
-           console.log(sizes.splice(1))
+           size = size.splice(1)
+           size = sizes.splice(1)
+           size = size.sort((a,b) => {return a-b})
         } else {
             size = size.split(' ')
             size = size.slice(1, size.length -1)
             for(let i =0; i < size.length; i++){
                 size[i] = parseFloat(size[i])
-                console.log(size[i])
         }
     }
     } else {
         console.log('sorry there are no sizes available')
     }
+    console.log(size)
 
-    const images = cheerio('#detail-display-icon > ul > li > img' , html).attr("src")
-    console.log(images)
+    const image = cheerio('#detail-display-img-wrapper > img' , html).attr('data-zoom-image')
+
+    let description = cheerio('.detail-description', html).text().replace(/\s\s+/g, '')
+    description = description.split(' ')
+    const indx = []
+    description.map((val, index, arr) => {
+        
+        if(val.charAt(val.length -1) === '.'){
+            indx.push(index)
+        }
+        
+    })
+    const index = Math.min(...indx)
+    description = description.slice(0, index + 1).join(' ')
+    console.log(description)
 
 
     return {
         name: name,
         price: price,
         size: size,
-        image: images
+        image: image,
+        description: description
     }
 })
 .catch((err) => {
     console.log(err)
 })
 }
+
 module.exports = productsScrape

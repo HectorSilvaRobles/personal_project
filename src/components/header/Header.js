@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Logout from '../signIn/Logout/Logout'
 
 
 class Header extends Component {
@@ -6,6 +7,7 @@ class Header extends Component {
         return (
             <div>
                 Hello
+                <Logout />
             </div>
         )
     }
