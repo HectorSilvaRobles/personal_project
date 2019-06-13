@@ -17,10 +17,13 @@ class Register extends Component {
         }
     }
 
+    
     componentDidMount(){
         axios.get('/api/user').then(res => {
             console.log(res.data)
+             this.props.setUser(res.data)
         })
+        console.log(this.props)
     }
 
     universalChangeHandler = (prop, value) => {
@@ -38,7 +41,8 @@ class Register extends Component {
 
             axios.post('/api/register', {username, password, email})
             .then(res => {
-                console.log(res.data)
+                this.props.setUser(res.data)
+                console.log(this.props)
             })
         }
     }
@@ -50,8 +54,7 @@ class Register extends Component {
     }
 
     render() {
-        console.log(this.state)
-        console.log(this.props)
+        console.log('this is props', this.props.setUser())
         const {username, password, email}= this.state;
         return (
             <div>
@@ -75,10 +78,6 @@ const mapStateToProps = (reduxState) => {
     return reduxState
 }
 
-const mapDispatchToProps = {
-    setUser
-}
-
-const myConnect = connect(mapStateToProps, mapDispatchToProps)
+const myConnect = connect(mapStateToProps, {setUser})
 
 export default myConnect(Register)

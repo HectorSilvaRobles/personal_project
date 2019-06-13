@@ -1,5 +1,5 @@
 #products {
-    background: lightgrey;
+    background: rgb(240, 238, 238);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

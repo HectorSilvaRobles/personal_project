@@ -23,8 +23,7 @@ module.exports = {
                         res.statusMessage = 'they match'
                         console.log('they match')
                     } else {
-                        res.status(200).send(req.session.user)
-                        console.log('they dont match')
+                        res.status(200).send('they dont match')
                     }
                 })
             }
@@ -37,8 +36,7 @@ module.exports = {
 
         dbInstance.auth.check_if_user_exists(username)
         .then(foundUser => {
-            console.log(foundUser)
-            if(foundUser.length >= 1){
+            if(foundUser.length){
                 console.log('new world order')
                 res.status(200).send('Username already exists')
             } else {
@@ -47,10 +45,10 @@ module.exports = {
                     bcrypt.hash(password, salt).then(hashedPassword => {
                         dbInstance.auth.register([username, hashedPassword, email])
                         .then((createdUser) => {
-                            console.log('this is the new user', createdUser)
-                            req.session.user = createdUser[0]
-                            console.log(req.session.user)
-                            res.statusMessage = 'created user'
+                            req.session.user = {
+                                username: createdUser[0].username,
+                                email: createdUser[0].email
+                            }
                             res.status(200).send(req.session.user)
                         })
                     })
@@ -60,8 +58,8 @@ module.exports = {
     },
 
     userInfo: (req, res, next) => {
-        console.log(req.session.user)
-        res.status(200).send(req.session);
+        console.log('this is the user', req.session.user)
+        res.status(200).send(req.session.user);
     },
 
     logout: (req, res, next) => {

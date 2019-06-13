@@ -3,6 +3,7 @@ import Header from '../header/Header'
 import ProductCard from '../ProductCard/ProductCard'
 
 class Home extends Component {
+
     render() {
         return (
             <div>

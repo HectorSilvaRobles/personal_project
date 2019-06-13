@@ -26,13 +26,18 @@ class Login extends Component {
         if(username !== '' && password !==''){
             axios.post('/api/login', {username, password})
             .then(res => {
-                console.log(res)
-                this.setState({
-                    redirect: true
-                })
+                if(res.data !== 'they dont match' && res.data !== 'Incorrect username/password'){
+                    this.setState({
+                        redirect: true
+                    })
+                    this.props.setUser(res.data)
+                } else {
+                    alert('Wrong username or password');
+                }
             })
         }
     }
+    
 
     goToHomePage = () => {
         if(this.state.redirect){
@@ -43,6 +48,7 @@ class Login extends Component {
 
     render() {
         const {username, password} = this.state
+        console.log(this.props)
         return (
             <div>
                 {this.goToHomePage()}
@@ -62,10 +68,7 @@ const mapStateToProps = (reduxState) => {
     return reduxState
 }
 
-const mapDispatchToProps = {
-    setUser
-}
 
-const myConnect = connect(mapStateToProps, mapDispatchToProps)
+const myConnect = connect(mapStateToProps, {setUser})
 
 export default myConnect(Login)
