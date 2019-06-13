@@ -28,7 +28,7 @@ class App extends React.Component {
   
   render(){
     return (
-      <div className="App">
+      <div id="App">
           <Switch>
             <Route exact path ='/signin' component={SignIn} />
             <Route exact path='/' component={Home} />

@@ -32,7 +32,6 @@ class ProductCard extends Component {
 
     render() {
         const products = this.state.products
-        console.log(this.state.specificProduct)
 
         const mapProducts = products.map((val, index, arr) => {
             return (
