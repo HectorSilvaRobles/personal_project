@@ -75,7 +75,7 @@
     }
     .product-info{
         width: 80vw;
-        height: 35vh;
+        height: 40vh;
         background: whitesmoke;
     }
 
@@ -100,7 +100,7 @@
         font-weight: bold
     }
     #sizes{
-        height: 35vh;
+        height: 50vh;
         width: 80vw;
     }
 

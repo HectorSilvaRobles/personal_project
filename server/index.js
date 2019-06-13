@@ -33,13 +33,14 @@ app.post('/api/register', register);
 app.get('/api/user', userInfo);
 app.get('/api/logout', logout);
 
-const {addProducts, getAllProducts, getSpecificProduct, updateQuantity} = require('./controllers/productController')
+const {addProducts, getAllProducts, getSpecificProduct, updateQuantity, updateShoeSize} = require('./controllers/productController')
 
 //product endpoints
 app.post('/api/add-products', addProducts);
 app.get('/api/all-products', getAllProducts);
 app.get('/api/product/:id', getSpecificProduct);
 app.put('/api/quantity/:id', updateQuantity);
+app.put('/api/mysize/:id', updateShoeSize);
 
 
 const port = 4000;
