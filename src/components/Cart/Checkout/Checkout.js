@@ -17,7 +17,7 @@ class Checkout extends Component {
         }
     }
 
-    handleToken(token, addresses){
+    async handleToken(token, addresses){
         console.log(token , total)
         Axios.post('/api/new-purchase', {token, total})
     }

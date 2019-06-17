@@ -2,11 +2,11 @@ require('dotenv').config()
 const express = require('express')
 const massive = require('massive');
 const session = require('express-session')
-const stripe = require('stripe')('sk_test_xLx9zF7c6VVyYkxRbpuHgrUB005P4mvuXC')
+
 const app = express()
 
-const {CONNECTION_STRING, SESSION_SECRET} = process.env;
-
+const {CONNECTION_STRING, SESSION_SECRET, SECRET_KEY} = process.env;
+const stripe = require('stripe')(SECRET_KEY)
 
 app.use(express.json())
 // app.use(cors())
@@ -63,7 +63,6 @@ app.post('/api/new-purchase', async (req, res) => {
             source: token.id
         });
 
-
         const charge = await stripe.charges.create({
                 amount: total * 100,
                 currency: 'USD',
@@ -79,7 +78,8 @@ app.post('/api/new-purchase', async (req, res) => {
                         postal_code: token.card.address_zip
                     }
                 }
-            });
+            }
+        );
         console.log("Charge:", {charge});
         console.log({customer})
         } catch { console.log('sorry') }
