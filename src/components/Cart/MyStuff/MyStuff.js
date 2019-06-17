@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {myCart} from '../../../dux/reducer'
+import {myCart, myTotal} from '../../../dux/reducer'
 import axios from 'axios'
 import './mystuff.css'
 
@@ -9,15 +9,15 @@ class MyStuff extends Component {
         super(props)
 
         this.state = {
-            myCart: []
+            myCart: [],
         }
     }
+
 
     componentDidMount(){
         const user = this.props.user.user_id
         axios.get(`/api/mycart/${user}`)
         .then(res => {
-            console.log(res.data)
             this.props.myCart(res.data)
             this.setState({
                 myCart: res.data
@@ -39,10 +39,21 @@ class MyStuff extends Component {
     }
 
     render() {
+        let myCosts = []
+        
+        let total = 0;
+        console.log(total)
         console.log(this.props)
-
+        
         const mapMyCart = this.state.myCart.map(val => {
-            console.log(val)
+            myCosts.push(parseFloat(val.price))
+    
+            const reducer = (acc, cur) => acc + cur
+            let myTotal = myCosts.reduce(reducer)
+            total = myTotal
+
+            this.props.myTotal(total)
+            
             return (
                 <div className='my-stuff'>
                     <h1>{val.name}</h1>
@@ -56,16 +67,16 @@ class MyStuff extends Component {
         return (
             <div>
                 {mapMyCart}
+                <h1>this is the total cost {total}</h1>
             </div>
         )
     }
 }
 
 const mapRedux = (reduxState) => {
-    console.log(reduxState)
     return reduxState
 }
 
-const myConnect = connect(mapRedux, {myCart})
+const myConnect = connect(mapRedux, {myCart, myTotal})
 
 export default myConnect(MyStuff)

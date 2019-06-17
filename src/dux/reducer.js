@@ -4,13 +4,15 @@ const initialState = {
     user: null,
     allProducts: [],
     myProduct: [],
-    myCart: []
+    myCart: [],
+    myTotal: 0,
 }
 
 const SET_USER = "SET_USER"
 const PRODUCTS = "PRODUCTS"
 const MY_PRODUCT = "MY_PRODUCT"
 const MY_CART = "MY_CART"
+const MY_TOTAL = "MY_TOTAL"
 
 
 export default function reducer(state = initialState, action){
@@ -27,6 +29,8 @@ export default function reducer(state = initialState, action){
         case MY_CART:
             console.log('this is my cart', action.payload)
             return {...state, myCart: action.payload}
+        case MY_TOTAL:
+            return {...state, myTotal: action.payload}
         default:
             return 'this is initial state', state;
     }
@@ -56,5 +60,12 @@ export function myCart(myCart){
     return {
         type: MY_CART,
         payload: myCart
+    }
+}
+
+export function myTotal(total){
+    return {
+        type: MY_TOTAL,
+        payload: total
     }
 }

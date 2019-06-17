@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {myCart} from '../../dux/reducer'
 import Header from '../header/Header'
 import MyStuff from './MyStuff/MyStuff'
+import Checkout from './Checkout/Checkout'
 
 class MyCart extends Component {
     
@@ -13,6 +14,7 @@ class MyCart extends Component {
                 <div id='my-cart'>
                     <h1>Here is your cart </h1>
                     <MyStuff />
+                    <Checkout />
                 </div>
             </div>
         )

@@ -2,12 +2,14 @@ require('dotenv').config()
 const express = require('express')
 const massive = require('massive');
 const session = require('express-session')
+const stripe = require('stripe')('sk_test_xLx9zF7c6VVyYkxRbpuHgrUB005P4mvuXC')
 const app = express()
 
 const {CONNECTION_STRING, SESSION_SECRET} = process.env;
 
 
 app.use(express.json())
+// app.use(cors())
 
 app.use(session({
     saveUninitialized: false,
@@ -48,6 +50,40 @@ const {addToCart, getUserCart, removeFromCart} = require('./controllers/cartCont
 app.post('/api/add-to-cart', addToCart)
 app.get('/api/mycart/:user', getUserCart )
 app.delete('/api/remove/:user&:product', removeFromCart)
+
+// stripe API endpoints
+app.post('/api/new-purchase', async (req, res) => {
+    console.log('Request:', req.body)
+
+    try {
+        const {token, total} = req.body;
+        
+        const customer = await stripe.customers.create({
+            email: token.email,
+            source: token.id
+        });
+
+
+        const charge = await stripe.charges.create({
+                amount: total * 100,
+                currency: 'USD',
+                customer: customer.id,
+                receipt_email: token.email,
+                shipping: {
+                    name: token.card.name,
+                    address: {
+                        line1: token.card.address_line1,
+                        line2: token.card.address_line2,
+                        city: token.card.address_city,
+                        country: token.card.address_country,
+                        postal_code: token.card.address_zip
+                    }
+                }
+            });
+        console.log("Charge:", {charge});
+        console.log({customer})
+        } catch { console.log('sorry') }
+    })
 
 
 const port = 4000;

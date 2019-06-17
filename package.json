@@ -8,6 +8,7 @@
     "bcrypt": "^3.0.6",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.0.0",
+    "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-session": "^1.16.1",
     "http-proxy-middleware": "^0.19.1",
@@ -17,9 +18,13 @@
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-stripe-checkout": "^2.6.3",
+    "react-toastify": "^5.2.1",
     "redux": "^4.0.1",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "request-promise": "^4.2.4",
+    "stripe": "^7.1.0",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
