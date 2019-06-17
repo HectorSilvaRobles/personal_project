@@ -32,6 +32,7 @@ module.exports = {
 
     register: (req, res, next) => {
         const {username, password, email} = req.body
+
         const dbInstance = req.app.get('db')
 
         dbInstance.auth.check_if_user_exists(username)
@@ -47,7 +48,8 @@ module.exports = {
                         .then((createdUser) => {
                             req.session.user = {
                                 username: createdUser[0].username,
-                                email: createdUser[0].email
+                                email: createdUser[0].email,
+                                user_id: createdUser[0].user_id
                             }
                             res.status(200).send(req.session.user)
                         })

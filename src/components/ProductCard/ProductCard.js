@@ -32,7 +32,6 @@ class ProductCard extends Component {
 
     render() {
         const products = this.state.products
-
         const mapProducts = products.map((val, index, arr) => {
             return (
                     <div className='product-card' key={val.product_id} >

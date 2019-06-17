@@ -17,7 +17,6 @@ class Register extends Component {
         }
     }
 
-    
     componentDidMount(){
         axios.get('/api/user').then(res => {
             console.log(res.data)
@@ -35,14 +34,18 @@ class Register extends Component {
     register = () => {
         const {username, email, password} = this.state
         if(username !== '' && email !=='' && password !==''){
-            this.setState({
-                redirect: true
-            })
 
             axios.post('/api/register', {username, password, email})
             .then(res => {
-                this.props.setUser(res.data)
-                console.log(this.props)
+                if(res.data !== 'Username already exists'){
+                    this.setState({
+                        redirect: true
+                    })
+                    this.props.setUser(res.data)
+                } else{
+                    alert('Username already exists')
+                }
+                
             })
         }
     }
@@ -54,7 +57,7 @@ class Register extends Component {
     }
 
     render() {
-        console.log('this is props', this.props.setUser())
+        
         const {username, password, email}= this.state;
         return (
             <div>

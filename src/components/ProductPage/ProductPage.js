@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from '../header/Header'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {product, myProduct} from '../../dux/reducer'
+import {product, myProduct, setUser} from '../../dux/reducer'
 import './productPage.css'
 import {Redirect} from 'react-router-dom'
 
@@ -30,6 +30,8 @@ class ProductPage extends Component {
                 }
             })
         })
+        axios.get('/api/user').then(res => this.props.setUser(res.data))
+        
     }
 
     tableCreator=(sizes)=>{
@@ -53,10 +55,15 @@ class ProductPage extends Component {
 
     addToCartButton = () => {
         const {myProduct} = this.state
+        console.log(myProduct)
+        if(myProduct == null){
+            alert('Choose A Size')
+        } else{
         const mySize = myProduct[0].size
         const productId = myProduct[0].product_id
         
-        if(mySize.length <= 4){
+        
+        if(mySize.length <= 4 && this.state.size !== null){
             this.setState({
                 redirect: true,
             })
@@ -66,7 +73,16 @@ class ProductPage extends Component {
         } else {
             alert('Choose A Size')
         }
+
+        if(this.props.user.user_id !== null){
+            const user_id = this.props.user.user_id
+            axios.post('/api/add-to-cart', {user_id, productId})
+            .then(res => console.log(res.data))
+        } else{
+            console.log('there is no user logged in')
+        }
     }
+}
 
     updateShoeSize =( size ) => {
         
@@ -76,7 +92,8 @@ class ProductPage extends Component {
             val.size = size
         })
         this.setState({
-            myProduct: product
+            myProduct: product,
+            size: size
         })
     }
 
@@ -129,7 +146,8 @@ const mapStateToProps = (reduxState) => {
 
 const mapReduxState = {
     product,
-    myProduct
+    myProduct,
+    setUser
 }
 
 const myConnect = connect(mapStateToProps, mapReduxState)

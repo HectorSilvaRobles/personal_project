@@ -42,6 +42,13 @@ app.get('/api/product/:id', getSpecificProduct);
 app.put('/api/quantity/:id', updateQuantity);
 app.put('/api/mysize/:id', updateShoeSize);
 
+// cart endpoints
+const {addToCart, getUserCart, removeFromCart} = require('./controllers/cartController')
+
+app.post('/api/add-to-cart', addToCart)
+app.get('/api/mycart/:user', getUserCart )
+app.delete('/api/remove/:user&:product', removeFromCart)
+
 
 const port = 4000;
 

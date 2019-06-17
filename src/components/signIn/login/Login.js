@@ -15,6 +15,14 @@ class Login extends Component {
         }
     }
 
+    componentDidMount(){
+        axios.get('/api/user').then(res => {
+            console.log(res.data)
+             this.props.setUser(res.data)
+        })
+        console.log(this.props)
+    }
+
     universalChangeHandler = (prop, value) => {
         this.setState({
             [prop]: value
@@ -48,7 +56,6 @@ class Login extends Component {
 
     render() {
         const {username, password} = this.state
-        console.log(this.props)
         return (
             <div>
                 {this.goToHomePage()}
