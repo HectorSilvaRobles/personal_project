@@ -45,15 +45,19 @@ app.put('/api/quantity/:id', updateQuantity);
 app.put('/api/mysize/:id', updateShoeSize);
 
 // cart endpoints
-const {addToCart, getUserCart, removeFromCart} = require('./controllers/cartController')
+const {addToCart, getUserCart, removeFromCart, resetCart} = require('./controllers/cartController')
 
 app.post('/api/add-to-cart', addToCart)
 app.get('/api/mycart/:user', getUserCart )
 app.delete('/api/remove/:user&:product', removeFromCart)
+app.delete('/api/reset-cart')
 
 // stripe API endpoints
 app.post('/api/new-purchase', async (req, res) => {
     console.log('Request:', req.body)
+
+    let error;
+    let status;
 
     try {
         const {token, total} = req.body;
@@ -82,9 +86,13 @@ app.post('/api/new-purchase', async (req, res) => {
         );
         console.log("Charge:", {charge});
         console.log({customer})
+        status = 'success'
+        console.log(status)
         } catch { console.log('sorry') }
-    })
 
+        res.json({status})
+    })
+    
 
 const port = 4000;
 

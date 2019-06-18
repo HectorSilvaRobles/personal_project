@@ -34,5 +34,12 @@ module.exports = {
             res.status(500).send('Was not able to remove product from cart')
         })
         
+    },
+    
+    resetCart: (req, res, next) => {
+        const dbInstance = req.app.get('db')
+        const {user} = req.params
+
+        dbInstance.cartDB
     }
 }

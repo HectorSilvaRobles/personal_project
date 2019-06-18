@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {myTotal} from '../../../dux/reducer'
 import Axios from 'axios';
 import {toast} from 'react-toastify'
+import {Redirect} from 'react-router-dom'
 
 toast.configure()
 
@@ -13,14 +14,27 @@ class Checkout extends Component {
         super(props)
 
         this.state = {
-            total: 0
+            total: 0,
+            redirect: false
         }
+        this.handleToken = this.handleToken.bind(this)
     }
 
     async handleToken(token, addresses){
         console.log(token , total)
-        Axios.post('/api/new-purchase', {token, total})
+        total = parseFloat(total)
+        
+        const response = await Axios.post('/api/new-purchase', {token, total})
+        const { status } = response.data
+        
+        if(status == 'success'){
+            this.setState({
+                redirect: true
+            })
+        }
     }
+
+   
   
     render() {
         console.log(this.props)
@@ -28,6 +42,7 @@ class Checkout extends Component {
 
         return (
             <div>
+            {this.state.redirect ? <Redirect to='/thank-you' /> : null}
                 <StripeCheckout
                 stripeKey="pk_test_kbq45PJwI7ALRKxEVvjQOpp600jPjZhK6m"
                 token={this.handleToken}
@@ -35,12 +50,14 @@ class Checkout extends Component {
                 shippingAddress
                 amount= {total * 100}
                  />
+                 
             </div>
         )
     }
 }
 
 let total = 0;
+let status = null
 
 const mapReduxState = (reduxState) => {
     total = reduxState.myTotal

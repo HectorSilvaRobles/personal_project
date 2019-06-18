@@ -49,11 +49,11 @@ class MyStuff extends Component {
             myCosts.push(parseFloat(val.price))
     
             const reducer = (acc, cur) => acc + cur
-            let myTotal = myCosts.reduce(reducer)
+            let myTotal = myCosts.reduce(reducer).toFixed(2)
             total = myTotal
 
             this.props.myTotal(total)
-            
+
             return (
                 <div className='my-stuff'>
                     <h1>{val.name}</h1>

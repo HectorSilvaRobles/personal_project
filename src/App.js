@@ -8,6 +8,7 @@ import ProductPage from './components/ProductPage/ProductPage'
 import MyCart from './components/Cart/MyCart'
 import {connect} from 'react-redux'
 import {setUser} from './dux/reducer'
+import ThankYou from './components/ThankYou/ThankYou'
 
 
 class App extends React.Component {
@@ -35,6 +36,7 @@ class App extends React.Component {
             <Route exact path='/' component={Home} />
             <Route path ='/product/:id' component={ProductPage} />
             <Route path='/my-cart' component={MyCart} />
+            <Route path='/thank-you' component={ThankYou} />
             <Route path ='*' render= {()=> {
               return <div>Sorry the page you are looking for does not exist</div>
             }} />
