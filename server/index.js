@@ -50,7 +50,7 @@ const {addToCart, getUserCart, removeFromCart, resetCart} = require('./controlle
 app.post('/api/add-to-cart', addToCart)
 app.get('/api/mycart/:user', getUserCart )
 app.delete('/api/remove/:user&:product', removeFromCart)
-app.delete('/api/reset-cart')
+app.delete('/api/reset-cart/:user', resetCart)
 
 // stripe API endpoints
 app.post('/api/new-purchase', async (req, res) => {

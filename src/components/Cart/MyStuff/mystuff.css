@@ -1,5 +1,21 @@
+.my-stuff {
+    display: flex;
+    align-items: center;
+    background: lightgrey;
+    margin: 10px;
+    height: 100%;
+    width: 30%;
+}
 
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-items: space-between;
+    margin: 20px;
+}
 
-.my-stuff > img {
+.my-stuff > span > img {
     width: 200px;
+    height: 90%;
+    margin: 10px;
 }

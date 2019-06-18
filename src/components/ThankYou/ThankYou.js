@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import Header from '.././header/Header'
 import {connect} from 'react-redux'
 import {myCart} from '../../dux/reducer'
+import axios from 'axios'
 
 
 class ThankYou extends Component {
     componentDidMount(){
-        this.props.myCart(null)
+        const user = this.props.user.user_id
+        axios.delete(`/api/reset-cart/${user}`)
+        .then(res => console.log(res.data))
+        .catch(err => {
+            console.log(err)
+        })
     }
     render() {
         return (

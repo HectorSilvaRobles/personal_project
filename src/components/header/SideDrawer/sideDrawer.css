@@ -1,0 +1,53 @@
+.drawer {
+    height: 100%;
+    background: black;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60%;
+    z-index: 200;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-out;
+}
+
+.drawer > a {
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    margin: 15px;
+    letter-spacing: 2px;
+}
+
+.drawer > div{
+    margin: 10px;
+    width: 100%;
+    height: 30px;
+}
+
+.drawer > div > button {
+    background: white;
+    display: flex;
+    margin: 0 auto;
+    width: 40%;
+    height: 30px;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.drawer.open {
+    transform: translateX(0)
+}
+
+@media screen and (min-width: 510px){
+    .drawer {
+        display: none;
+    }
+}

@@ -4,7 +4,6 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {product, myProduct, setUser} from '../../dux/reducer'
 import './productPage.css'
-import {Redirect} from 'react-router-dom'
 
 
 class ProductPage extends Component {
@@ -14,7 +13,6 @@ class ProductPage extends Component {
         this.state = {
             product: null,
             size: null,
-            redirect: false,
             myProduct: null
         }
     }
@@ -64,9 +62,6 @@ class ProductPage extends Component {
         
         
         if(mySize.length <= 4 && this.state.size !== null){
-            this.setState({
-                redirect: true,
-            })
             this.props.myProduct(myProduct)
             axios.put(`/api/mysize/${productId}?size=${mySize}`)
             .then(res => console.log(res.data))
@@ -126,7 +121,6 @@ class ProductPage extends Component {
 
         return (
             <div id='product'>
-                {this.state.redirect ? <Redirect to='/my-cart' /> : null}
                 <Header />
                 <div id='productInfo'>
                     {mapProductInfo}

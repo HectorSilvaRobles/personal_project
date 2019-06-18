@@ -23,7 +23,7 @@ class MyStuff extends Component {
                 myCart: res.data
             })
         })
-        .catch(err => alert('there was an error'))
+        .catch(err => alert('Your Cart Is Empty'))
     }
 
     removeFromCart = (product) => {
@@ -56,11 +56,13 @@ class MyStuff extends Component {
 
             return (
                 <div className='my-stuff'>
-                    <h1>{val.name}</h1>
-                    <img src={val.image} />
-                    <h3>{val.my_size}</h3>
-                    <h3>{val.price}</h3>
-                    <button onClick={()=>this.removeFromCart(val)}>Remove</button>
+                    <span><img src={val.image} /></span>
+                    <div className='info'>
+                        <h1>{val.name}</h1>
+                        <h3>{val.my_size}</h3>
+                        <h3>{val.price}</h3>
+                        <button onClick={()=>this.removeFromCart(val)}>Remove</button>
+                    </div>
                 </div>
             )
         })

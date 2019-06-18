@@ -40,6 +40,10 @@ module.exports = {
         const dbInstance = req.app.get('db')
         const {user} = req.params
 
-        dbInstance.cartDB
+        dbInstance.cartDB.resetCart(user)
+        .then(updateCart => console.log('just reset cart'))
+        .catch(err => {
+            res.status(500).send('Was not able to reset your cart')
+        })
     }
 }
