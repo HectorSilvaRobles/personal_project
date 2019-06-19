@@ -13,7 +13,7 @@
 #header > div {
     display: flex;
     align-items: center;
-    margin: 10px;
+    margin:  10px 50px 10px ;
 }
 
 #header > div > div > button {

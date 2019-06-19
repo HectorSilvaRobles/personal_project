@@ -4,7 +4,8 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {product, myProduct, setUser} from '../../dux/reducer'
 import './productPage.css'
-
+import SideDrawer from '../header/SideDrawer/SideDrawer'
+import Backdrop from '../Backdrop/Backdrop'
 
 class ProductPage extends Component {
     constructor(props){
@@ -13,7 +14,8 @@ class ProductPage extends Component {
         this.state = {
             product: null,
             size: null,
-            myProduct: null
+            myProduct: null,
+            drawerOpen: false
         }
     }
 
@@ -30,6 +32,16 @@ class ProductPage extends Component {
         })
         axios.get('/api/user').then(res => this.props.setUser(res.data))
         
+    }
+
+    drawerToggleClick = () => {
+        this.setState((prevState) => {
+            return {drawerOpen: !prevState.drawerOpen};
+        })
+    }
+
+    backdropClick =() => {
+        this.setState({drawerOpen: false})
     }
 
     tableCreator=(sizes)=>{
@@ -97,6 +109,13 @@ class ProductPage extends Component {
         let mapProductInfo;
         console.log(this.props)
         
+
+        let backdrop;
+        if(this.state.drawerOpen){
+            backdrop = <Backdrop click={this.backdropClick} />
+        }
+
+
         if(product !== null){
             mapProductInfo = product.map(val => {
                 this.tableCreator(val.size)
@@ -121,7 +140,9 @@ class ProductPage extends Component {
 
         return (
             <div id='product'>
-                <Header />
+                <Header drawerclick={this.drawerToggleClick} />
+                <SideDrawer show={this.state.drawerOpen} />
+                {backdrop}
                 <div id='productInfo'>
                     {mapProductInfo}
                     <div className='tricky'>

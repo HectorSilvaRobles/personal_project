@@ -34,12 +34,20 @@
 }
 
 .product-card > button {
+    background: transparent;
+    border: none;
+    color: white;
+}
+
+.product-card:hover > button {
     background: black;
     border: none;
     color: white;
     height: 35px;
-    width: 100px;
+    width: 150px;
     text-transform: uppercase;
     font-weight: bold;
     margin-top: 10px;
+    transition: 0.3s ease-out;
+
 }

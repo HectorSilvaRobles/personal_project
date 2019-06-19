@@ -6,6 +6,7 @@ import Axios from 'axios';
 import {toast} from 'react-toastify'
 import {Redirect} from 'react-router-dom'
 
+
 toast.configure()
 
 
@@ -58,7 +59,7 @@ class Checkout extends Component {
 }
 
 let total = 0;
-let status = null
+
 
 const mapReduxState = (reduxState) => {
     total = reduxState.myTotal
