@@ -39,6 +39,7 @@ class Checkout extends Component {
     render() {
         console.log(this.props)
         console.log(total)
+        total = (parseFloat(total) + 2.33).toFixed(2)
 
         return (
             <div>

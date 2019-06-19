@@ -12,9 +12,7 @@ class MyCart extends Component {
             <div>
                 <Header />
                 <div id='my-cart'>
-                    <h1>Here is your cart </h1>
                     <MyStuff />
-                    <Checkout />
                 </div>
             </div>
         )
