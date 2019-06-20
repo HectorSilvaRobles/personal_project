@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {setUser} from '../../../dux/reducer'
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
+import './login.css'
 
 class Login extends Component {
     constructor(props){
@@ -57,12 +58,12 @@ class Login extends Component {
     render() {
         const {username, password} = this.state
         return (
-            <div>
+            <div className='login'>
                 {this.goToHomePage()}
-                <div>
-                    Username: <input onChange= {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={username} name='username' />
-                    Password: <input onChange={(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={password} name='password' type='password' />
-                    <div>
+                <div id='user-input'>
+                    Username <input onChange= {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={username} name='username' placeholder='username' />
+                    Password <input onChange={(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={password} name='password' type='password' placeholder='password' />
+                    <div className='login-button'>
                         <button onClick={this.login}>Login</button>
                     </div>
                 </div>

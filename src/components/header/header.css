@@ -33,17 +33,18 @@
 }
 
 #header > div > a:hover,
-#header > div > a:active {
+#header > div > a:active,
+#header > div > a:focus {
     color: orange;
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 680px){
     #header > div{
         display: none;
     }
 }
 
-@media (min-width: 510px ){
+@media (min-width: 680px ){
     .togglebutton{
         display: none;
     }

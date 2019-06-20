@@ -8,7 +8,7 @@
     min-width: 300px;
 }
 .product-image {
-    width: 70vw;
+    width: 80vw;
     margin: 0 auto;
 }
 .product-image > img {
@@ -75,7 +75,7 @@
 
 
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
     #productInfo{
         justify-content: center;
         width: 100%;
@@ -120,7 +120,7 @@
     }
 }
 
-@media screen and (min-width: 501px ) and ( max-width: 1050px){
+@media screen and (min-width: 601px ) and ( max-width: 1050px){
     #sizes > li {
         background: whitesmoke;
         width: 150px;
@@ -163,12 +163,18 @@
         font-size: 20px;
         font-weight: bold
     }
+    .product-info {
+        height: 250px;
+    }
 }
 
 @media screen and (min-width: 1051px) {
+    .product-info {
+        height: 300px;
+    }
     #sizes > li {
         background: whitesmoke;
-        width: 200px;
+        width: 180px;
         height: 55px;
         margin: 10px;
         display: flex;
@@ -177,7 +183,7 @@
 
     #sizes > li > button {
         background: white;
-        width: 200px;
+        width: 180px;
         font-weight: bold;
         font-size: 20px;
         border: 3px solid black;

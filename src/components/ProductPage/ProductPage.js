@@ -6,6 +6,11 @@ import {product, myProduct, setUser} from '../../dux/reducer'
 import './productPage.css'
 import SideDrawer from '../header/SideDrawer/SideDrawer'
 import Backdrop from '../Backdrop/Backdrop'
+import {toast} from 'react-toastify'
+
+import "react-toastify/dist/ReactToastify.css"
+toast.configure()
+
 
 class ProductPage extends Component {
     constructor(props){
@@ -77,6 +82,7 @@ class ProductPage extends Component {
             this.props.myProduct(myProduct)
             axios.put(`/api/mysize/${productId}?size=${mySize}`)
             .then(res => console.log(res.data))
+            toast(`Just added ${this.state.product[0].name} to cart`, {type: 'success'})
         } else {
             alert('Choose A Size')
         }

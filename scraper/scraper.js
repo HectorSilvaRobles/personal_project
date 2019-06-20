@@ -8,7 +8,7 @@ const writeStream = fs.createWriteStream('post.csv')
 /// write headers
 writeStream.write(`Product \n`)
 
-const url = 'https://www.sneakerhead.com/nike-air-max-mens-shoes-p1.html'
+const url = 'https://www.sneakerhead.com/adidas-yeezy.html'
 
 rp(url)
 .then((html)=> {
@@ -18,6 +18,7 @@ rp(url)
     for( let i =0; i < listLength; i++){
         products.push(cheerio('.cat-item-name > a', html)[i].attribs.href);
     }
+    console.log(products)
     return Promise.all(
         products.map((url) => {
             return JSON.stringify(productsScrape(url))

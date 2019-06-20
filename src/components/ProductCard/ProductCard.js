@@ -43,6 +43,7 @@ class ProductCard extends Component {
         })
         return (
             <div id='products'>
+                
                 {this.state.redirect ? <Redirect to={`/product/${this.state.specificProduct}`} /> : null}
                 {mapProducts}
             </div>

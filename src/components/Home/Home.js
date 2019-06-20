@@ -34,7 +34,7 @@ class Home extends Component {
                 <SideDrawer show={this.state.drawerOpen} />
                 {backdrop}
                 <main>
-                    <ProductCard />
+                    Hey
                 </main>
             </div>
         )

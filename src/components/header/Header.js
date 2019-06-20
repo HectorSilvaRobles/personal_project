@@ -28,7 +28,7 @@ class Header extends Component {
                     <span onClick={() => this.toHomePage()}><img src='https://i.pinimg.com/originals/5d/10/d9/5d10d98db2f88b601b55c0809e598f26.png' /></span>
                     <div>
                         <NavLink exact to='/'>Home</NavLink>
-                        <NavLink >Products</NavLink>
+                        <NavLink exact to ='/nike' >Nike</NavLink>
                         <NavLink to='/my-cart'>Cart</NavLink>
                         <Logout />
                     </div>

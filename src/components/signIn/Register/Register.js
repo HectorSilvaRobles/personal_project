@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {setUser} from '../../../dux/reducer'
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
+import './register.css'
 
 
 class Register extends Component {
@@ -60,14 +61,14 @@ class Register extends Component {
         
         const {username, password, email}= this.state;
         return (
-            <div>
+            <div className='register'>
                 {this.goToHomePage()}
-                <div>
-                    Username: <input onChange= {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={username} name='username' />
-                    Password: <input onChange = {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={password} name='password' type='password' />
-                    Email: <input onChange = {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={email} name='email' />
+                <div id='user-input'>
+                    Username <input onChange= {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={username} name='username' placeholder='new username' />
+                    Password <input onChange = {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={password} name='password' type='password' placeholder='new password' />
+                    Email <input onChange = {(e) => this.universalChangeHandler(e.target.name, e.target.value)} value={email} name='email' placeholder='enter your email' />
                 </div>
-                <div>
+                <div className='register-button'>
                     <button onClick={this.register}>
                         Register
                     </button>

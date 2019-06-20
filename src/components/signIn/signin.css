@@ -1,0 +1,49 @@
+.page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    overflow: scroll;
+}
+
+div > img {
+    width: 150px;
+}
+
+#sign-in {
+    /* margin-top: 25px; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80%;
+    width: 95%;
+}
+
+#register, #login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65%;
+    width: 45%;
+    background: rgb(240, 238, 238);
+    box-shadow: 5px 2px 10px rgb(0, 0, 0, 0.3);
+    border: solid black 2px;
+}
+
+@media screen and (max-width: 780px){
+    #sign-in{ 
+        flex-direction: column;
+    }
+    div > img {
+        width: 100px;
+        margin-bottom: 40px;
+    }
+    #register, #login {
+        width: 90%;
+        height: 70%;
+        margin: 20px 0;
+        padding: 10px;
+    }
+}

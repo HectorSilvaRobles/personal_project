@@ -1,11 +1,15 @@
 const rp = require('request-promise');
 const cheerio = require('cheerio')
 
+
+
 const productsScrape = function(url){
 return rp(url)
 .then((html) => {
     const name = cheerio('.detail-title', html).text()
+    // console.log(name)
     const price = cheerio('.price', html).text().slice(1)
+    // console.log(price)
 
     /// for shoe sizes
     let size = cheerio('#detail-all-size', html).text().replace(/\s\s+/gm, ' ')
@@ -31,9 +35,14 @@ return rp(url)
     } else {
         console.log('sorry there are no sizes available')
     }
-    console.log(size)
+    size = size.toString()
+    size = '{ ' + size + ' }'
+    // size = size.replace(/\[/g, '{').replace(/\]/g, '}')
+    
+    // console.log(size)
 
     const image = cheerio('#detail-display-img-wrapper > img' , html).attr('data-zoom-image')
+    // console.log(image)
 
     let description = cheerio('.detail-description', html).text().replace(/\s\s+/g, '')
     description = description.split(' ')
@@ -47,16 +56,16 @@ return rp(url)
     })
     const index = Math.min(...indx)
     description = description.slice(0, index + 1).join(' ')
-    console.log(description)
+    // console.log(description)
 
 
-    return {
+    console.log ( JSON.stringify({
         name: name,
         price: price,
         size: size,
         image: image,
         description: description
-    }
+    } ))
 })
 .catch((err) => {
     console.log(err)

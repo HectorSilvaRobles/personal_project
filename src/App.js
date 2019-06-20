@@ -9,6 +9,8 @@ import MyCart from './components/Cart/MyCart'
 import {connect} from 'react-redux'
 import {setUser} from './dux/reducer'
 import ThankYou from './components/ThankYou/ThankYou'
+import ProductCard from './components/ProductCard/ProductCard';
+import Nike from './components/Brands/Nike'
 
 
 class App extends React.Component {
@@ -34,6 +36,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path ='/signin' component={SignIn} />
             <Route exact path='/' component={Home} />
+            <Route path ='/nike' component={Nike} />
             <Route path ='/product/:id' component={ProductPage} />
             <Route path='/my-cart' component={MyCart} />
             <Route path='/thank-you' component={ThankYou} />
