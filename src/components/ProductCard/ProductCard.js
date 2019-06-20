@@ -11,15 +11,19 @@ class ProductCard extends Component {
         this.state = {
             products: [],
             specificProduct: null,
-            redirect: false
+            redirect: false,
+            brand: null
         }
     }
 
     componentDidMount(){
-        axios.get('/api/all-products')
+        const brand = this.props.brand
+        axios.get(`/api/${brand}`)
         .then(res => this.setState({
             products: res.data
         }))
+
+        console.log(brand)
     }
 
     buttonClick (id){
@@ -50,5 +54,8 @@ class ProductCard extends Component {
         )
     }
 }
+
+
+
 
 export default ProductCard

@@ -15,19 +15,20 @@ class MyStuff extends Component {
             redirect: false,
             productId: null
         }
+
     }
 
 
-    componentDidMount(){
-        const user = this.props.user.user_id
+    componentDidMount= ()=>{
+        const user = this.props.reducer.user.user_id
         axios.get(`/api/mycart/${user}`)
         .then(res => {
+            console.log(res.data)
             this.props.myCart(res.data)
-            this.setState({
-                myCart: res.data
-            })
         })
         .catch(err => alert('Your Cart Is Empty'))
+
+        console.log(this.props)
     }
 
     removeFromCart = (product) => {
@@ -35,9 +36,8 @@ class MyStuff extends Component {
         
         axios.delete(`/api/remove/${user_id}&${product_id}`)
         .then(res => {
-            this.setState({
-                myCart: res.data
-            })
+            console.log(res.data)
+            this.props.myCart(res.data)
         })
         .catch(err => alert('was not able to remove from cart'))
     }
@@ -49,23 +49,22 @@ class MyStuff extends Component {
         })
     }
 
-    render() {
-        let myCosts = []
-        
-        let total = 0;
-        console.log(total)
+    total = () => {
         console.log(this.props)
-        console.log(this.state.myCart)
-        
-        const mapMyCart = this.state.myCart.map(val => {
-            myCosts.push(parseFloat(val.price))
-    
-            const reducer = (acc, cur) => acc + cur
-            let myTotal = myCosts.reduce(reducer).toFixed(2)
-            total = myTotal
+    }
 
-            this.props.myTotal(total)
-            console.log(val)
+    render() {
+        const myCart = this.props.reducer.myCart
+        let myCosts = []
+        let total = 0;
+        
+
+        let map = myCart.map(val => {
+            myCosts.push(parseInt(val.price))
+            const reducer = (acc, cur) => acc + cur
+            console.log(myCosts)
+            
+            total = myCosts.reduce(reducer).toFixed(2)
             return (
                 <div id='my-stuff'>
                     <span><img src={val.image} onClick={()=> this.goToProduct(val.product_id)}/></span>
@@ -78,13 +77,17 @@ class MyStuff extends Component {
                 </div>
             )
         })
+
+        console.log(total)
+        
+        
         return (
             <div>
             {this.state.redirect ? <Redirect to={`/product/${this.state.productId}`} /> : null}
-            {this.state.myCart.length > 0 ? <div id='cart'>
+            {this.props.reducer.myCart.length > 0 ? <div id='cart'>
             <h2>CART</h2>
             <div id='mine'>
-                {mapMyCart}
+                {map}
             </div>
             <div id='summary'>
                 <h1>Summary</h1>
@@ -92,9 +95,9 @@ class MyStuff extends Component {
                 <div className='totals'><h3>Shipping & Handling</h3> <h3>$0.00</h3></div>
                 <div className='totals'><h3>Estimated Tax</h3><h3>$2.33</h3></div>
                 <div className='total'><h1>Total</h1> <h1> ${(parseFloat(total) + 2.33).toFixed(2)}</h1></div>
-                <Checkout />
+                <Checkout total={total} />
             </div>
-        </div> : <h1>Nothing in cart</h1>}
+        </div> : <h1>empty cart</h1>}
         </div>
             
         )

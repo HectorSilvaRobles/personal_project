@@ -21,7 +21,6 @@ class Header extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div id='header' >
                     {this.state.redirect ? <Redirect to='/' /> : null }
@@ -29,6 +28,7 @@ class Header extends Component {
                     <div>
                         <NavLink exact to='/'>Home</NavLink>
                         <NavLink exact to ='/nike' >Nike</NavLink>
+                        <NavLink exact to ='/adidas' >Adidas</NavLink>
                         <NavLink to='/my-cart'>Cart</NavLink>
                         <Logout />
                     </div>

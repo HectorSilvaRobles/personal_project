@@ -22,9 +22,10 @@ class Checkout extends Component {
     }
 
     async handleToken(token, addresses){
-        console.log(token , total)
-        total = parseFloat(total)
         
+        total = this.props.total
+        total = parseFloat(total)
+        console.log(token , total)
         const response = await Axios.post('/api/new-purchase', {token, total})
         const { status } = response.data
         

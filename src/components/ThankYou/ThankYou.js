@@ -7,7 +7,7 @@ import axios from 'axios'
 
 class ThankYou extends Component {
     componentDidMount(){
-        const user = this.props.user.user_id
+        const user = this.props.reducer.user.user_id
         axios.delete(`/api/reset-cart/${user}`)
         .then(res => console.log(res.data))
         .catch(err => {

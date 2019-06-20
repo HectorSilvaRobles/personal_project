@@ -54,5 +54,25 @@ module.exports = {
         dbInstance.productDB.put.updateShoeSize([size, id])
         .then(()=> res.status(200).send(`this is my shoe size ${size}`))
         .catch(err => res.status(500))
+    },
+
+    adidas: (req, res, next) => {
+        const dbInstance = req.app.get('db')
+
+        console.log('getting all adidas')
+
+        dbInstance.productDB.get.adidasProducts()
+        .then((result) => res.status(200).send(result))
+        .catch(err => res.status(500))
+    },
+
+    nike: (req, res, next) => {
+        const dbInstance = req.app.get('db')
+
+        console.log('these are the Nike products')
+
+        dbInstance.productDB.get.nikeProducts()
+        .then(result => res.status(200).send(result))
+        .catch(err => res.status(500))
     }
 }

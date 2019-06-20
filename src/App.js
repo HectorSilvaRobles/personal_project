@@ -11,6 +11,7 @@ import {setUser} from './dux/reducer'
 import ThankYou from './components/ThankYou/ThankYou'
 import ProductCard from './components/ProductCard/ProductCard';
 import Nike from './components/Brands/Nike'
+import Adidas from './components/Brands/Adidas'
 
 
 class App extends React.Component {
@@ -28,6 +29,7 @@ class App extends React.Component {
       console.log(this.props)
       console.log(res.data)
     })
+    
   }
   
   render(){
@@ -37,6 +39,7 @@ class App extends React.Component {
             <Route exact path ='/signin' component={SignIn} />
             <Route exact path='/' component={Home} />
             <Route path ='/nike' component={Nike} />
+            <Route path='/adidas' component={Adidas} />
             <Route path ='/product/:id' component={ProductPage} />
             <Route path='/my-cart' component={MyCart} />
             <Route path='/thank-you' component={ThankYou} />

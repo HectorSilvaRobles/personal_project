@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from '../header/Header'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {product, myProduct, setUser} from '../../dux/reducer'
+import {product, myProduct, setUser, myCart} from '../../dux/reducer'
 import './productPage.css'
 import SideDrawer from '../header/SideDrawer/SideDrawer'
 import Backdrop from '../Backdrop/Backdrop'
@@ -25,9 +25,10 @@ class ProductPage extends Component {
     }
 
     componentDidMount(){
-        axios.get('/api/all-products').then(res => {
+        console.log(this.props)
+        axios.get(`/api/all-products`).then(res => {
             this.props.product(res.data)
-            this.props.allProducts.map((val, index, arr) => {
+            this.props.reducer.allProducts.map((val, index, arr) => {
                 if(val.product_id == this.props.match.params.id){
                     this.setState({
                         product: [val]
@@ -87,10 +88,17 @@ class ProductPage extends Component {
             alert('Choose A Size')
         }
 
-        if(this.props.user.user_id !== null){
-            const user_id = this.props.user.user_id
+        if(this.props.reducer.user.user_id !== null){
+            const user_id = this.props.reducer.user.user_id
             axios.post('/api/add-to-cart', {user_id, productId})
             .then(res => console.log(res.data))
+
+            const user = this.props.reducer.user.user_id
+            axios.get(`/api/mycart/${user}`)
+            .then(res => {
+                console.log(res.data)
+                this.props.myCart(res.data)
+            })
         } else{
             console.log('there is no user logged in')
         }
@@ -168,7 +176,8 @@ const mapStateToProps = (reduxState) => {
 const mapReduxState = {
     product,
     myProduct,
-    setUser
+    setUser,
+    myCart
 }
 
 const myConnect = connect(mapStateToProps, mapReduxState)
