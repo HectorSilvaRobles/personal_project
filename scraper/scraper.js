@@ -8,7 +8,7 @@ const writeStream = fs.createWriteStream('post.csv')
 /// write headers
 writeStream.write(`Product \n`)
 
-const url = 'https://www.sneakerhead.com/adidas-yeezy.html'
+const url = 'https://www.sneakerhead.com/nike-running-training-sport-p1.html'
 
 rp(url)
 .then((html)=> {

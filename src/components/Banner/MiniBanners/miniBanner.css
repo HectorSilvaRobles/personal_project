@@ -1,0 +1,17 @@
+#mini-banners{
+    margin: 100px auto 0;
+    width: 97%;
+    
+    height: 70vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+@media screen and (max-width: 680px){
+    #mini-banners{
+        flex-direction: column;
+        height: 140vh;
+    }
+}

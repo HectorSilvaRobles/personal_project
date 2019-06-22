@@ -12,7 +12,8 @@ export default function SideDrawer(props) {
     return (
         <div className={drawerClasses}>
             <NavLink exact to='/'>Home</NavLink>
-            <NavLink >Products</NavLink>
+            <NavLink exact to ='/nike' >Nike</NavLink>
+            <NavLink exact to ='/adidas' >Adidas</NavLink>
             <NavLink to='/my-cart'>Cart</NavLink>
             <Logout />
         </div>

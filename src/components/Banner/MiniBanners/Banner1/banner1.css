@@ -1,0 +1,38 @@
+#mini-banner1{
+    background-image: url('https://cdn.shopify.com/s/files/1/0852/0048/products/LHNikeAirMax97SeGs923288-500-2_3af211bb-3220-42f4-b620-0d8f9a5108ba.jpg?v=1553015856');
+    background-position: center;
+    background-size: cover;
+    height: 95%;
+    width: 48%;
+    cursor: pointer;
+}
+
+#content {
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+}
+
+#content > h1 {
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+#content > h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+#content > button {
+    width: 100px;
+    height: 4vh;
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#content > button:hover {
+    background: red;
+    color: white;
+    border: none;
+}

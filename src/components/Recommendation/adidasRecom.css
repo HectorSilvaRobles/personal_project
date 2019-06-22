@@ -1,0 +1,56 @@
+#recommend {
+    border: solid black 2px;
+    display: flex;
+    width: 95%;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#product-recommend{
+    height: 350px;
+    padding: 10px 40px;
+    margin: 10px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: solid black 2px;
+    cursor: pointer;
+}
+
+#product-recommend > h1 {
+    width: 180px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px 0;
+}
+
+#product-recommend > img {
+    width: 120%;
+    margin-bottom: 5px;
+    
+}
+
+#product-recommend > button {
+    border: none;
+    color: white;
+    margin: -30px;
+}
+
+#product-recommend:hover > button{
+    background: black;
+    color:white;
+    margin: 5px 0;
+    width: 70%;
+    height: 4vh;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 25px;
+    border: solid black 2px;
+}

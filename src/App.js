@@ -9,7 +9,6 @@ import MyCart from './components/Cart/MyCart'
 import {connect} from 'react-redux'
 import {setUser} from './dux/reducer'
 import ThankYou from './components/ThankYou/ThankYou'
-import ProductCard from './components/ProductCard/ProductCard';
 import Nike from './components/Brands/Nike'
 import Adidas from './components/Brands/Adidas'
 
@@ -31,8 +30,10 @@ class App extends React.Component {
     })
     
   }
+
   
   render(){
+    console.log(this.props)
     return (
       <div id="App">
           <Switch>

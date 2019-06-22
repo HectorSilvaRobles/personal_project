@@ -1,0 +1,25 @@
+#mini-banner2{
+    background-image: url('https://eyeconicwear.com/wp-content/uploads/2018/03/EyeConicWear-Pharrell-Williams-x-nmd-human-race-adidas-nmd-r1-pharrell-williams-x-nmd-human-race-men-1.jpg');
+    background-size: cover;
+    background-position: bottom;
+    height: 95%;
+    width: 48%;
+}
+
+.banner2H1, .banner2H2{
+    color: black;
+    font-family: arial;
+    font-weight: 520;
+}
+
+.banner2B{
+    background: black;
+    color: white;
+    height: 5vh;
+}
+@media screen and (max-width: 680px){
+    #mini-banner2, #mini-banner1{
+        margin: 10px 0;
+        width: 90%;
+    }
+}

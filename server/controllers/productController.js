@@ -10,17 +10,6 @@ module.exports = {
         })
     },
 
-    getAllProducts: (req, res, next) => {
-        const dbInstance = req.app.get('db');
-
-        console.log('getting all products')
-
-        dbInstance.productDB.get.allProducts()
-        .then((result) => res.status(200).send(result), console.log('got the products'))
-        .catch((err) => {
-            res.status(500).send('sorry was not able to get all products')
-        })
-    },
 
     getSpecificProduct: (req, res, next) => {
         const dbInstance = req.app.get('db')
@@ -72,6 +61,26 @@ module.exports = {
         console.log('these are the Nike products')
 
         dbInstance.productDB.get.nikeProducts()
+        .then(result => res.status(200).send(result))
+        .catch(err => res.status(500))
+    },
+
+    recommendation: (req, res, next) => {
+        const dbInstance = req.app.get('db')
+
+        let {shoe} = req.params
+        shoe = `%${shoe}%`
+        console.log(shoe)
+
+        dbInstance.productDB.get.allProducts(shoe)
+        .then(result => res.status(200).send(result))
+        .catch(err => res.status(500))
+    },
+
+    allProducts: (req, res, next) => {
+        const dbInstance = req.app.get('db')
+
+        dbInstance.productDB.get.products()
         .then(result => res.status(200).send(result))
         .catch(err => res.status(500))
     }

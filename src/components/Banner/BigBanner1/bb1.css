@@ -1,0 +1,135 @@
+#banner1 {
+    cursor: pointer;
+    width: 95%;
+}
+
+.title, .title > button {
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    width: 300px;
+    border: none;
+    cursor: pointer;
+}
+
+.title > button:hover{
+    background: red;
+    color: white;
+    
+}
+
+@media screen and (max-width: 679px){
+    #banner1 {
+        background-image: url('https://cdn-images.farfetch-contents.com/12/43/12/89/12431289_11433073_480.jpg');
+        height: 70vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        
+        margin: 0 auto;
+        
+    }
+
+    .title{
+        padding-top: 450px;
+        margin: 0 auto;
+        color: black;
+        font-size: 30px;
+        text-shadow: 4px 4px 5px darkgrey ;
+    }
+
+    .title > button {
+        margin-top: 10px;
+        width: 150px;
+        height: 35px;
+        border-radius: 25px;
+        color: white;
+        background: black;
+        box-shadow: 4px 4px 9px 4px darkgrey ;
+    }
+}
+
+@media screen and (max-width: 999px) and (min-width: 680px){
+    #banner1 {
+        background-image: url('https://sneakerbardetroit.com/wp-content/uploads/2018/10/adidas-Yeezy-Boost-350-V2-Zebra-Restock-Release-Date.jpg');
+        background-size: cover;
+        height: 70vh;
+        
+        margin: 0 auto;
+    }
+
+    .title {
+        padding-top: 80px;
+        width: 180px;
+        margin-left: 20px;
+        font-size: 25px;
+        color: black;
+    }
+
+    .title > button {
+        width: 100px;
+        background: black;
+        height: 30px;
+        border-radius: 20px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 1000px){
+
+    #banner1 {
+        background-image: url('https://res.cloudinary.com/haven/image/upload/v1510958811/adidas-Yeezy-Boost-V2-SS17-June-News_jo1hkv.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 75vh;
+        
+        margin: 0 auto;
+    }
+
+    .title > button {
+        background: white;
+        color: black;
+        height: 40px;
+        width: 120px;
+        border-radius: 20px;
+    }
+
+    .title {
+        padding-top: 220px;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1000px){
+    .title{
+        padding-left: 50px;
+        font-size: 35px;
+    }
+    .title > button {
+        margin-top: 15px;
+        font-size: 14px;
+        background: white;
+        color: black;
+        height: 40px;
+        width: 120px;
+        border-radius: 20px;
+    }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1700px){
+    .title {
+        margin-left: 60px;
+        font-size: 40px;
+    }
+
+    .title > button {
+        margin-top: 15px;
+        font-size: 14px;
+        background: white;
+        color: black;
+        height: 45px;
+        width: 140px;
+        border-radius: 20px;
+    }
+}

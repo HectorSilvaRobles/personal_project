@@ -1,3 +1,12 @@
 .home{
     height: 100%;
+    overflow: scroll;
+    background: rgb(240, 238, 238);
+}
+.home > div {
+    height: 300px;
+}
+
+.recommendation {
+    height: 20vh;
 }
