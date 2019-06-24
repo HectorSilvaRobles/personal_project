@@ -5,6 +5,7 @@ const session = require('express-session')
 
 
 const app = express()
+app.use(express.static( `${__dirname}/../build`));
 
 const {CONNECTION_STRING, SESSION_SECRET, SECRET_KEY} = process.env;
 const stripe = require('stripe')(SECRET_KEY)
@@ -22,7 +23,7 @@ app.use(session({
 })
 )
 
-app.use(express.static( `${__dirname}/../build`));
+
 
 massive(CONNECTION_STRING)
 .then(dbInstance => {
