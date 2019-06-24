@@ -3,6 +3,7 @@ const express = require('express')
 const massive = require('massive');
 const session = require('express-session')
 
+
 const app = express()
 
 const {CONNECTION_STRING, SESSION_SECRET, SECRET_KEY} = process.env;
@@ -20,6 +21,8 @@ app.use(session({
     }
 })
 )
+
+app.use(express.static( `${__dirname}/../build`));
 
 massive(CONNECTION_STRING)
 .then(dbInstance => {
@@ -107,6 +110,11 @@ app.post('/api/new-purchase', async (req, res) => {
     
 
 const port = 4000;
+
+const path = require('path')
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 app.listen(port, () => console.log(`listening on port ${port}`))
 
