@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from './node_modules/react'
+import {connect} from './node_modules/react-redux'
 import {setUser} from '../../../dux/reducer'
-import axios from 'axios'
-import {Redirect} from 'react-router-dom'
+import axios from './node_modules/axios'
+import {Redirect} from './node_modules/react-router-dom'
 import './login.css'
 
 class Login extends Component {

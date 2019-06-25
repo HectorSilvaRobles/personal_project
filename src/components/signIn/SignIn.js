@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Register from './Register/Register'
-import Login from './Login/Login.js'
+import Login from './login/Login.js'
 import './signin.css'
 
 class SignIn extends Component {
