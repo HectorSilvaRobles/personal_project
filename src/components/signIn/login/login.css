@@ -65,4 +65,8 @@
         background: black;
         color: white;
     }
+
+    .login {
+        height: 40vh;
+    }
 }

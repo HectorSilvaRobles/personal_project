@@ -147,7 +147,7 @@
 
 @media screen and (max-width: 500px){
     #my-stuff > span > img {
-        width: 150px;
+        width: 80%;
     }
     .info > h1 {
         font-size: 12px;

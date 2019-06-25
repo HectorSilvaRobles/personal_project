@@ -8,10 +8,10 @@
     min-width: 300px;
 }
 .product-image {
-    width: 80vw;
+    width: 75vw;
     margin: 0 auto;
 }
-.product-image > img {
+.pro-image > img {
     border: 3px solid black;
 }
 .product-info{
@@ -192,10 +192,12 @@
     #add-to-cart {
         font-size: 22px;
         height: 10vh;
+        width: 70%;
+        margin: 0 auto;
     }
 
     .product-info > p {
-        width: 85%;
+        width: 70%;
         text-align: center;
         font-size: 32px;
         margin: 5px 0px 10px 0px;
@@ -207,11 +209,26 @@
         font-weight: 500;
         letter-spacing: 2px;
         margin: 10px 0px 10px 0px;
-        
+        width: 70%;
     }
 
     .product-info > h2 {
         font-size: 30px;
         font-weight: bold
     }
+
+    #sizes{
+        width: 70%;
+    }
+
+    .product-image {
+        width: 70%;
+        display: flex;
+    }
+
+    .tricky{
+        display: flex;
+        flex-direction: column;
+    }
+
 }

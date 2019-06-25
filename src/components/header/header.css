@@ -38,6 +38,14 @@
     color: orange;
 }
 
+#header > span > img:hover{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    
+    border: black 4px solid;
+}
+
 @media screen and (max-width: 680px){
     #header > div{
         display: none;

@@ -23,21 +23,21 @@
 @media screen and (max-width: 679px){
     #banner1 {
         background-image: url('https://cdn-images.farfetch-contents.com/12/43/12/89/12431289_11433073_480.jpg');
-        height: 70vh;
+        height: 80vh;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-        
         margin: 0 auto;
         
     }
 
     .title{
-        padding-top: 450px;
+        padding-top: 510px;
         margin: 0 auto;
         color: black;
         font-size: 30px;
         text-shadow: 4px 4px 5px darkgrey ;
+        
     }
 
     .title > button {
@@ -117,7 +117,7 @@
     }
 }
 
-@media screen and (min-width: 1201px) and (max-width: 1700px){
+@media screen and (min-width: 1201px) and (max-width: 2000px){
     .title {
         margin-left: 60px;
         font-size: 40px;

@@ -136,7 +136,7 @@ class ProductPage extends Component {
                 
                 return (
                     <div id='pro'>
-                        <div className='product-image'>
+                        <div className='pro-image'>
                             <img src={val.image} className='product-image' />
                         </div>
                         <div className='product-info'>

@@ -1,7 +1,7 @@
 #mini-banners{
     margin: 100px auto 0;
     width: 97%;
-    
+    cursor: pointer;
     height: 70vh;
     display: flex;
     justify-content: space-around;

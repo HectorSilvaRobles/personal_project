@@ -33,8 +33,12 @@ div > img {
 }
 
 @media screen and (max-width: 780px){
+    .page{
+        height: 100%;
+    }
     #sign-in{ 
         flex-direction: column;
+        height: 100%;
     }
     div > img {
         width: 100px;
