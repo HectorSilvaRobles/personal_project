@@ -119,3 +119,11 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => console.log(`listening on port ${port}`))
 
+// My professional career began as a Mentor and Web Developer of DevMountain. My time there was spent with a small, complex team with an ever changing coding curriculum.
+
+// Most recently, I was promoted to Lead Mentor and Web Developer of DevMountain Phoenix in March 2019. One of my primary responsibilities involves guiding students through the second half of the curriculum with their personal and group projects.
+
+// Prior to my current role, I served as a Customer Service Associate of Lowe's where I was responsible for the Tools, Hardware, Electrical, and Lumber departments. While there, I focused on working with my team to ensure a smooth and satisfying customer experience.
+
+// Personal Website: https://www.seanparmar.com
+// Github: https://github.com/Parmesanio 
